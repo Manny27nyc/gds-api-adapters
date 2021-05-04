@@ -108,7 +108,10 @@ describe GdsApi::Organisations do
   it "fetches an organisation by slug" do
     hmrc = "hm-revenue-customs"
     api_response = organisation(slug: hmrc)
-    api_response["id"] = "www.gov.uk/api/organisations/#{hmrc}"
+    api_response["id"] = Pact.term(
+      generate: "www.gov.uk/api/organisations/#{hmrc}",
+      matcher: /gov\.uk\/api\/organisations\/#{hmrc}$/,
+    )
 
     organisation_api
       .given("the organisation hmrc exists")
