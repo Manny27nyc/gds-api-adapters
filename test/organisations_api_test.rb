@@ -122,7 +122,7 @@ describe GdsApi::Organisations do
         headers: GdsApi::JsonClient.default_request_headers,
       )
       .will_respond_with(
-        status: 200,
+        status: 201,
         body: api_response,
       )
 
